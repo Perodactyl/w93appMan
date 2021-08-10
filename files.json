@@ -2,5 +2,6 @@
 	"/a/boot/appMan.js":"appMan.js",
 	"/a/boot/appMan.css":"appMan.css",
 	"/a/appMan/main.js":"appMan/main.js",
-	"/a/appMan/main.html":"appMan/main.html"
+	"/a/appMan/main.html":"appMan/main.html",
+	"/a/appMan/start.js":"appMan/start.js"
 }

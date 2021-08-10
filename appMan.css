@@ -1,0 +1,22 @@
+/*This file goes in /a/boot! Make sure it stays there!*/
+.appMan-app{
+	background-color: whitesmoke;
+	border: 2px outset #dfdfdf;
+  min-height: 50px;
+  position:relative;
+}
+.appMan-app-title{
+	font-size:13px;
+}
+.appMan-app-title:first-letter{
+	text-transform:capitalize;
+}
+.appMan-app-description{
+	white-space:pre;
+  display:block;
+}
+.appMan-app-type{
+  position:absolute;
+  bottom:3px;
+  right:3px;
+}

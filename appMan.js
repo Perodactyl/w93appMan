@@ -4,12 +4,13 @@ setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 10000)
 var proc = null
 document.addEventListener("keyup", (ev)=>{
 	if(ev.key == "a" && ev.altKey){
-      	if(proc != null){
-    		$alert("A process is still running.")
-        	return
-    	}
-    	startup()
-    }
+		ev.preventDefault()
+      		if(proc != null){
+    			$alert("A process is still running.")
+        		return
+    		}
+    		startup()
+	}
 })
 function startup(){
 	$file.open("/a/appMan/main.html", "String", (c)=>{

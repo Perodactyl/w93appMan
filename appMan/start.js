@@ -5,5 +5,12 @@
 
 
 
-
-startAppMan()
+if(typeof startAppMan !== "undefined"){
+  startAppMan()
+}else{
+  $confirm("App Manager didn't initialize. Do you want to reboot and start it?", (y)=>{
+    if(!y)return
+    location.hash = "#!appMan"
+    location.reload()
+  })
+}

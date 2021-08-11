@@ -31,3 +31,17 @@ function startup(){
 if(location.hash == "#!appMan"){
 	startup()
 }
+$kernel.on("splash:ready", ()=>{
+	fetch("https://perodactyl.github.io/w93appMan/v.txt").then((r)=>{r.text().then((t)=>{
+      $file.open("/a/appMan/v.txt", "String", (v)=>{
+      	if(v != t){
+        	$confirm("App Manager has an update. Do you want to install it?", (y)=>{
+            	if(y){
+                	uninstallappMan()
+                    fetch("https://perodactyl.github.io/w93appMan/install.js").then((r)=>{r.text().then((t)=>{eval(t)})})
+                }
+            })
+        }
+      })
+    })})
+})

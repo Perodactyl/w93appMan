@@ -1,6 +1,6 @@
 //This file installs App Manager when run. It does not get saved.
 fetch("https://perodactyl.github.io/w93appMan/files.json").then((c)=>{c.json().then((files)=>{
-  if(typeof uninstallappMan !== "undefined"){
+  if(typeof uninstallappMan !== "undefined" && (!sessionStorage.getItem("AllowReinstall") || sessionStorage.getItem("AllowReinstall") != "yes")){
     $alert("AppMan already exists! reload after uninstalling and then rerun.")
     return
   }

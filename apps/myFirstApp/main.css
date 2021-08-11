@@ -1,0 +1,6 @@
+/* .__selector provides a simple method to access elements.
+  This background WILL blind you.
+*/
+.__background{
+  background:linear-gradient(86deg,#00ff0a 0,#ffeb00 100%);
+}

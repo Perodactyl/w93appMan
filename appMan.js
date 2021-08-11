@@ -1,6 +1,6 @@
 //This file belongs it /a/boot
 //Make sure it stays there!
-setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 10000)
+setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 3000)
 var proc = null
 document.addEventListener("keyup", (ev)=>{
 	if(ev.key == "a" && ev.altKey){
@@ -55,3 +55,15 @@ window.uninstallappMan = function(){
     $notif("Uninstalled App Manager!")
     $log("Attempt to uninstall app manager.")
 }
+
+$boot.TOOLONG.innerText = "App Manager Commonly makes boot take a while."
+$boot.REINSTALL.innerText = "Boot Options"
+
+//Add aliases:
+$kernel.on("splash:ready", ()=>{
+  document.body.addEventListener("DOMSubtreeModified", ()=>{
+	document.querySelector("#s42_dock").classList.add("__bottomBar")
+	document.querySelector("#s42_background").classList.add("__background")
+    $("header.ui_window__head").toggleClass("__window-top",true).toggleClass("__background",true)
+  })
+})

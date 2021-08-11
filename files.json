@@ -4,5 +4,6 @@
 	"/a/appMan/main.js":"appMan/main.js",
 	"/a/appMan/main.html":"appMan/main.html",
 	"/a/appMan/start.js":"appMan/start.js",
-	"/a/appMan/v.txt":"v.txt"
+	"/a/appMan/v.txt":"v.txt",
+	"/a/boot/jq.js":"jq.js"
 }

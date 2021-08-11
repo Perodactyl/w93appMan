@@ -37,6 +37,7 @@ $kernel.on("splash:ready", ()=>{
       	if(v != t){
         	$confirm("App Manager has an update. Do you want to install it?", (y)=>{
             	if(y){
+                  	sessionStorage.setItem("AllowReinstall", "yes")
                 	uninstallappMan()
                     fetch("https://perodactyl.github.io/w93appMan/install.js").then((r)=>{r.text().then((t)=>{eval(t)})})
                 }
@@ -45,3 +46,12 @@ $kernel.on("splash:ready", ()=>{
       })
     })})
 })
+window.uninstallappMan = function(){
+  	console.log("Deleting...")
+	  $file.delete("/a/boot/appMan.js")
+    $file.delete("/a/appMan/main.js")
+    $file.delete("/a/appMan/main.html")
+    $file.delete("/a/appMan/")
+    $notif("Uninstalled App Manager!")
+    $log("Attempt to uninstall app manager.")
+}

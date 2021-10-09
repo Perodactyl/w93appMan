@@ -9,4 +9,6 @@ It uses `fetch` to get an index of files and goes through them all and installs 
 
 
 
-Yes I know there's some weird official thing that might someday come out, but I'm bored of that!
+Yes I know there's some weird official thing that might someday come out, but I'm bored of waiting for that!
+
+P.S: To uninstall, open terminal and type `uninstallappMan()`

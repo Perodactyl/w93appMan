@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/Perodactyl/w93appMan/master/registry.json

@@ -1,6 +1,6 @@
-//This file belongs it /a/boot
+//This file belongs in /a/boot
 //Make sure it stays there!
-setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 3000)
+$kernel.on("splash:ready",()=>setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 3000))
 var proc = null
 document.addEventListener("keyup", (ev)=>{
 	if(ev.key == "a" && ev.altKey){
@@ -25,11 +25,16 @@ function startup(){
             animationIn:"fadeIn",
             animationOut:"fadeOut"
           })
-    	$file.open("/a/appMan/main.js", "String", (c)=>{eval(c)})
+    	initAppManKernel()
 	})
+}
+function initAppManKernel(){
+	$file.open("/a/appMan/main.js", "String", (c)=>{eval(c)})
 }
 if(location.hash == "#!appMan"){
 	startup()
+}else{
+  initAppManKernel()
 }
 $kernel.on("splash:ready", ()=>{
 	fetch("https://perodactyl.github.io/w93appMan/v.txt").then((r)=>{r.text().then((t)=>{
@@ -46,7 +51,7 @@ $kernel.on("splash:ready", ()=>{
       })
     })})
 })
-window.uninstallappMan = function(){
+window.uninstallAppMan = function(){
   	console.log("Deleting...")
 	  $file.delete("/a/boot/appMan.js")
     $file.delete("/a/appMan/main.js")
@@ -58,6 +63,8 @@ window.uninstallappMan = function(){
 
 $boot.TOOLONG.innerText = "App Manager Commonly makes boot take a while."
 $boot.REINSTALL.innerText = "Boot Options"
+
+
 
 //Add aliases:
 $kernel.on("splash:ready", ()=>{

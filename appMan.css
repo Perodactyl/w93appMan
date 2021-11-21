@@ -2,8 +2,11 @@
 .appMan-app{
 	background-color: whitesmoke;
 	border: 2px outset #dfdfdf;
-  min-height: 50px;
-  position:relative;
+  	min-height: 50px;
+  	position:relative;
+}
+.appMan-app:active{
+  	border-style:inset;
 }
 .appMan-app-title{
 	font-size:13px;

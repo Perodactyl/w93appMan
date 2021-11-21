@@ -6,5 +6,6 @@
 	"/a/appMan/main.html":"appMan/main.html",
 	"/a/appMan/start.js":"appMan/start.js",
 	"/a/appMan/v.txt":"v.txt",
-	"/a/boot/jq.js":"jq.js"
+	"/a/boot/jq.js":"jq.js",
+	"/a/appMan/registry.url.txt":"appMan/registry.url.txt"
 }

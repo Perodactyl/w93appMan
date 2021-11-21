@@ -5,8 +5,8 @@
 
 
 
-if(typeof startAppMan !== "undefined"){
-  startAppMan()
+if(typeof startup !== "undefined"){
+  startup()
 }else{
   $confirm("App Manager didn't initialize. Do you want to reboot and start it?", (y)=>{
     if(!y)return

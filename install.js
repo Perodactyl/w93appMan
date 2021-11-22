@@ -10,7 +10,7 @@ fetch("https://perodactyl.github.io/w93appMan/files.json").then((c)=>{c.json().t
   var toCss = []
   Object.keys(files).forEach((path)=>{
     var loadURL = "https://perodactyl.github.io/w93appMan/"+files[path]
-    $log("Load "+loadURL+" to "+path
+    $log("Load "+loadURL+" to "+path)
     fetch(loadURL).then((res)=>{
       if(path.startsWith(";")){
         if(path.endsWith(".css")){

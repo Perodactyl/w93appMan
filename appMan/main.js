@@ -15,7 +15,8 @@ function confirmAsPromise(text){
 function saveAsPromise(path,text){
 	return new Promise(r=>$file.save(path,text,r))
 }
-async function loadBranch(registryURL,isUrl=false){
+window.loadBranch = async function(registryURL,isUrl=false,resetList=true){
+  	if(resetList)foundApps = []
   	try{
       	var registryFile = registryURL || "/a/appMan/registry.url.txt"
 		var registry 
@@ -24,18 +25,16 @@ async function loadBranch(registryURL,isUrl=false){
         }else{
           registry = await (await fetch(await loadAsPromise(registryFile))).json()
         }
-        console.log(registry)
     }catch(e){
       	$alert("Failed to fetch registry @"+registryFile+". Do you have internet access?\n"+e)
     	return
     }
-    console.log(registry)
     for(var i in registry){
     	let url = registry[i]
         if(url.match(/^\|-/)){
            	var nUrl = url.replace(/^\|-/,"")
         	console.log("branch:",nUrl)
-            loadBranch(nUrl,true)
+            loadBranch(nUrl,true,false)
             continue
         }
       	console.log("load:",url)
@@ -51,6 +50,7 @@ async function loadBranch(registryURL,isUrl=false){
 }
 if(loadWindow)setTimeout(loadBranch,500)
 function finishAppLoad(){
+	list = document.getElementById("appMan-appList")
   	list.innerHTML = ""
 	for(let idx in foundApps){
 	  	let data = foundApps[idx]

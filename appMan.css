@@ -34,7 +34,7 @@
     border: 1px inset darkgrey;
     max-width: 380px;
 }
-#appMan-close{
+.appMan-ui-top{
   	position: absolute;
     top: 2px;
     right: 3px;

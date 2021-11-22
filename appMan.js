@@ -25,7 +25,7 @@ function startup(){
             animationIn:"fadeIn",
             animationOut:"fadeOut",
             resizable:false,
-            draggable:false,
+			draggable:false,
             maximizable:false,
             height:innerHeight,
             center:false,
@@ -36,6 +36,11 @@ function startup(){
     	initAppManKernel()
 	})
 }
+setInterval(()=>{
+	if(proc){
+    	proc.el.base.style.height = innerHeight+"px"
+    }
+},500)
 function initAppManKernel(){
 	$file.open("/a/appMan/main.js", "String", (c)=>{eval(c)})
 }

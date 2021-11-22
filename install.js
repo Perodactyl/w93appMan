@@ -1,19 +1,24 @@
 //This file installs App Manager when run. It does not get saved.
 fetch("https://perodactyl.github.io/w93appMan/files.json").then((c)=>{c.json().then((files)=>{
-  if(typeof uninstallappMan !== "undefined" && (!sessionStorage.getItem("AllowReinstall") || sessionStorage.getItem("AllowReinstall") != "yes")){
+  if(typeof uninstallAppMan !== "undefined" && (!sessionStorage.getItem("AllowReinstall") || sessionStorage.getItem("AllowReinstall") != "yes")){
     $alert("AppMan already exists! reload after uninstalling and then rerun.")
     return
   }
+  $log(files)
   var fetchesDone = 0
   var toRun = []
   var toCss = []
   Object.keys(files).forEach((path)=>{
-    fetch("https://perodactyl.github.io/w93appMan/"+files[path]).then((res)=>{
+    var loadURL = "https://perodactyl.github.io/w93appMan/"+files[path]
+    $log("Load "+loadURL+" to "+path
+    fetch(loadURL).then((res)=>{
       if(path.startsWith(";")){
         if(path.endsWith(".css")){
           toCss.push(files[path])
+          $log("AutoCSS: "+path)
         }else{
           toRun.push(path.replace(";", ""))
+          $log("AutoRUN: "+path)
         }
         path = path.replace(";", "")
       }

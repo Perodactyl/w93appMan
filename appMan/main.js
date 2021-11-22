@@ -77,6 +77,11 @@ function finishAppLoad(){
 	            }
 	          var m = data.main
               var mp = "/a/manApps/"+data.title+"/"+m
+              var inst = data.inst || ""
+              console.log("install:",inst || "none")
+              if(inst){
+              	eval(await loadAsPromise("/a/manApps/"+data.title+"/"+inst))
+              }
               console.log("main:",mp)
 	          eval(await loadAsPromise(mp))
               console.log("installed")

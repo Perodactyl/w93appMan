@@ -23,8 +23,16 @@ function startup(){
     	    onactive:()=>{location.hash = "#!appMan"},
     	    ondestroy:()=>{proc = null},
             animationIn:"fadeIn",
-            animationOut:"fadeOut"
+            animationOut:"fadeOut",
+            resizable:false,
+            draggable:false,
+            maximizable:false,
+            height:innerHeight,
+            center:false,
+            header:false
           })
+        proc.el.base.style.left="0px"
+		proc.el.base.style.top="0px"
     	initAppManKernel()
 	})
 }

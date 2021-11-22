@@ -4,12 +4,14 @@
 	border: 2px outset #dfdfdf;
   	min-height: 50px;
   	position:relative;
+	padding: 1%;
 }
 .appMan-app:active{
   	border-style:inset;
 }
 .appMan-app-title{
 	font-size:13px;
+	padding:2%;
 }
 .appMan-app-title:first-letter{
 	text-transform:capitalize;
@@ -23,7 +25,7 @@
   bottom:3px;
   right:3px;
 }
-.appMan-app h3{
+#appMan-container h3{
 	margin: 2px;
     margin-left: 6%;
     margin-bottom: 2%;

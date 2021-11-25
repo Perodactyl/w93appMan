@@ -4,7 +4,7 @@ var atob = require("atob")
 
 var gh = new GitHub({
    username: 'Perodactyl',
-   token: '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'
+   token: ''
 });
 
 var r = gh.getRepo("Perodactyl/w93appMan");

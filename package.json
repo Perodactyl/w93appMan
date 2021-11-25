@@ -1,0 +1,16 @@
+{
+  "name": "w93appman",
+  "version": "1.0.0",
+  "description": "[Windows 93](https://www.windows93.net/) \"Application\" Manager",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Perodactyl",
+  "license": "ISC",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "github-api": "^3.4.0",
+    "node-fetch": "^2.6.6"
+  }
+}

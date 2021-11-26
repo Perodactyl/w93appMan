@@ -1,0 +1,4 @@
+{
+	"problems.decorations.enabled": false
+	//F The fact that I can't tell VSCode I don't care about issues.
+}

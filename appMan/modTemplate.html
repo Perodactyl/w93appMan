@@ -1,0 +1,7 @@
+<h2>@title</h2>
+<p>This mod $:(@installed ? "is" : "isn't"):$ installed.</p>
+<br />
+<button onclick="toggleModInstalled('@title',_$proc)">$:(@installed ? "un" : ""):$install</button>
+<h3>Description</h3>
+<p>@description</p><br />
+Version: $:"@version".split(",").join("."):$<br />

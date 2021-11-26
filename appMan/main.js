@@ -18,7 +18,7 @@ window.saveAsPromise = function(path,text){
 window.modOverview = async function(mod){
   var p = $window({
 		title:"Mod overview - "+mod.title,
-	  	html:"Loading..."
+	 	html:"Loading..."
   })
   var template = await loadAsPromise("/a/appMan/modTemplate.html")
   mod.installed = !!$fs.utils.exist("/a/manApps/"+mod.title)
@@ -28,34 +28,34 @@ window.modOverview = async function(mod){
   p.el.body.innerHTML = replaced
 }
 window.toggleModInstalled = async (name,win=null)=>{
-  	try{
+ 	try{
 		var app = w93Apps.filter(a=>a.title==name)[0]
 	}catch(e){
 		$alert("Failed to find mod named "+name)
-	  	return
+	 	return
 	}
 	var dir
 	if(dir = $fs.utils.exist("/a/manApps/"+name)){	
 		for(p in dir){
 		 await new Promise(r=>$file.delete("/a/manApps/"+name+"/"+p,r))
 		}
-  		$file.delete("/a/manApps/"+name+"/")
+ 		$file.delete("/a/manApps/"+name+"/")
 		$explorer.refresh()
 		if(typeof window["uninstall_mod_"+name.replace(/\s/g,"_")] !== "undefined"){
 		  window["uninstall_mod_"+name.replace(/\s/g,"_")]()
 		}
 	  $notif("Uninstalled '"+app.title+"'")
-  	}else{
+ 	}else{
 		w93InstallApp(app,false)
 	}
-  	if(win){
+ 	if(win){
 		$window.instances[win].close()
 	}
 }
 window.loadBranch = async function(registryURL,isUrl=false,resetList=true){
-  	if(resetList)foundApps = []
-  	try{
-	  	var registryFile = registryURL || "/a/appMan/registry.url.txt"
+ 	if(resetList)foundApps = []
+ 	try{
+	 	var registryFile = registryURL || "/a/appMan/registry.url.txt"
 		var registry 
 		if(isUrl){
 		  registry = await (await fetch(registryFile)).json()
@@ -63,7 +63,7 @@ window.loadBranch = async function(registryURL,isUrl=false,resetList=true){
 		  registry = await (await fetch(await loadAsPromise(registryFile))).json()
 		}
 	}catch(e){
-	  	$alert("Failed to fetch registry @"+registryFile+". Do you have internet access?\n"+e)
+	 	$alert("Failed to fetch registry @"+registryFile+". Do you have internet access?\n"+e)
 		return
 	}
 	for(var i in registry){
@@ -74,7 +74,7 @@ window.loadBranch = async function(registryURL,isUrl=false,resetList=true){
 			loadBranch(nUrl,true,false)
 			continue
 		}
-	  	console.log("load:",url)
+	 	console.log("load:",url)
 		try{
 			var meta = await (await fetch(url+"app.json")).json()
 			meta.url = url
@@ -83,17 +83,17 @@ window.loadBranch = async function(registryURL,isUrl=false,resetList=true){
 			$alert("An app failed to load @"+url+":\n"+e)
 		}
 	}
-  	window.w93Apps = foundApps
-  	finishAppLoad()
+ 	window.w93Apps = foundApps
+ 	finishAppLoad()
 }
 window.w93InstallApp = async (data,confirm=true)=>{
-  			if(!data){console.warn("Attempt to install undefined mod.");return}
+ 			if(!data){console.warn("Attempt to install undefined mod.");return}
 			if(!confirm ? true : await confirmAsPromise("Do you want to install \""+data.title+"?\"")){
-			  	console.log("install:",data.title)
+			 	console.log("install:",data.title)
 				var f = data.files
 				f.push("app.json")
 				for(idx in f){
-				  	let file = f[idx]
+				 	let file = f[idx]
 					let reqUrl = data.url+file
 					let content = await (await fetch(reqUrl)).text()
 					let p = "/a/manApps/"+data.title+"/"+file
@@ -105,7 +105,7 @@ window.w93InstallApp = async (data,confirm=true)=>{
 			  var inst = data.inst || ""
 			  console.log("install:",inst || "none")
 			  if(inst){
-			  	eval(await loadAsPromise("/a/manApps/"+data.title+"/"+inst))
+			 	eval(await loadAsPromise("/a/manApps/"+data.title+"/"+inst))
 			  }
 			  console.log("main:",mp)
 			  eval(await loadAsPromise(mp))
@@ -116,9 +116,9 @@ window.w93InstallApp = async (data,confirm=true)=>{
 if(loadWindow)setTimeout(loadBranch,500)
 function finishAppLoad(){
 	list = document.getElementById("appMan-appList")
-  	list.innerHTML = ""
+ 	list.innerHTML = ""
 	for(let idx in foundApps){
-	  	let data = foundApps[idx]
+	 	let data = foundApps[idx]
 		let el = document.createElement("div")
 		el.className = "appMan-app"
 		let styleTitle = data.title
@@ -134,7 +134,7 @@ function finishAppLoad(){
 
 
 window.uninstallappMan = function(){
-  	console.log("Deleting...")
+ 	console.log("Deleting...")
 	  $file.delete("/a/boot/appMan.js")
 	$file.delete("/a/appMan/main.js")
 	$file.delete("/a/appMan/main.html")
@@ -150,8 +150,8 @@ if(!loadWindow){
 		if(app.match(/^\.+$/)){
 			console.log("skip:",app)
 			return
-	  	}
-	  	var mPath = JSON.parse(await loadAsPromise("/a/manApps/"+app+"/app.json")).main
+	 	}
+	 	var mPath = JSON.parse(await loadAsPromise("/a/manApps/"+app+"/app.json")).main
 		var main = "/a/manApps/"+app+"/"+mPath
 		console.log("initialize:",app,"main",main)
 		eval(await loadAsPromise(main))

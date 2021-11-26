@@ -5,9 +5,9 @@ var proc = null
 document.addEventListener("keyup", (ev)=>{
 	if(ev.key == "a" && ev.altKey){
 		//ev.preventDefault()
-	  	if(proc != null){
+	 	if(proc != null){
 			//$alert("A process is still running.")
-		  	proc.close()
+		 	proc.close()
 			proc = null
 			return
 		}
@@ -32,15 +32,15 @@ function startup(){
 			header:false,
 			menu:[
 					{
-	  					name: "Options",
-	  					items: [
+	 					name: "Options",
+	 					items: [
 							{
-		  						name: "Uninstall",
-		  						action: promptAppManDestroy
-		  					}
+		 						name: "Uninstall",
+		 						action: promptAppManDestroy
+		 					}
 						]
 					}
-  			]
+ 			]
 		  })
 		proc.el.base.style.left="0px"
 		proc.el.base.style.top="0px"
@@ -63,10 +63,10 @@ if(location.hash == "#!appMan"){
 $kernel.on("splash:ready", ()=>{
 	fetch("https://perodactyl.github.io/w93appMan/v.txt").then((r)=>{r.text().then((t)=>{
 	  $file.open("/a/appMan/v.txt", "String", (v)=>{
-	  	if(v != t){
+	 	if(v != t){
 			$confirm("App Manager has an update. Do you want to install it?", (y)=>{
 				if(y){
-				  	sessionStorage.setItem("AllowReinstall", "yes")
+				 	sessionStorage.setItem("AllowReinstall", "yes")
 					uninstallappMan()
 					fetch("https://perodactyl.github.io/w93appMan/install.js").then((r)=>{r.text().then((t)=>{eval(t)})})
 				}
@@ -76,7 +76,7 @@ $kernel.on("splash:ready", ()=>{
 	})})
 })
 window.uninstallAppMan = function(){
-  	console.log("Deleting...")
+ 	console.log("Deleting...")
 	  $file.delete("/a/boot/appMan.js")
 	$file.delete("/a/appMan/main.js")
 	$file.delete("/a/appMan/main.html")

@@ -2,12 +2,12 @@
 .appMan-app{
 	background-color: whitesmoke;
 	border: 2px outset #dfdfdf;
-  	min-height: 50px;
-  	position:relative;
+ 	min-height: 50px;
+ 	position:relative;
 	padding: 1%;
 }
 .appMan-app:active{
-  	border-style:inset;
+ 	border-style:inset;
 }
 .appMan-app-title{
 	font-size:13px;
@@ -32,12 +32,12 @@
     position: sticky;
 }
 #appMan-appList{
- 	padding: 2px;
+	padding: 2px;
     border: 1px inset darkgrey;
     max-width: 380px;
 }
 .appMan-ui-top{
-  	position: absolute;
+ 	position: absolute;
     top: 2px;
     right: 3px;
 }

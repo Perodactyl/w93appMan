@@ -3,7 +3,7 @@
 $kernel.on("splash:ready",()=>setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 3000))
 var proc = null
 document.addEventListener("keyup", (ev)=>{
-	if(ev.key == "a" && ev.altKey){
+	if(ev.key == "a" && (ev.altKey || macKeys.altKey)){
 		//ev.preventDefault()
 	 	if(proc != null){
 			//$alert("A process is still running.")
@@ -13,6 +13,10 @@ document.addEventListener("keyup", (ev)=>{
 		}
 		startup()
 	}
+  	if(ev.altKey || macKeys.altKey){
+    	ev.preventDefault()
+    }
+  	macKeys.reset()
 })
 function startup(){
 	$file.open("/a/appMan/main.html", "String", (c)=>{

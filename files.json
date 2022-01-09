@@ -1,4 +1,5 @@
 {
+	";/a/boot/macKeys.js":"macKeys.js",
 	";/a/boot/appMan.js":"appMan.js",
 	";/a/boot/appMan.css":"appMan.css",
 	"/a/appMan/main.js":"appMan/main.js",
@@ -6,5 +7,6 @@
 	"/a/appMan/start.js":"appMan/start.js",
 	"/a/appMan/v.txt":"v.txt",
 	"/a/boot/jq.js":"jq.js",
-	"/a/appMan/registry.url.txt":"appMan/registry.url.txt"
+	"/a/appMan/registry.url.txt":"appMan/registry.url.txt",
+	"/a/appMan/modTemplate.html":"appMan/modTemplate.html"
 }

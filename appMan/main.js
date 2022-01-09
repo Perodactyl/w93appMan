@@ -6,15 +6,6 @@ $log("AppMan process running.")
 var foundApps = [
   
 ]
-window.loadAsPromise = function(path){
-	return new Promise(r=>$file.open(path,r))
-}
-window.confirmAsPromise = function(text){
-	return new Promise(r=>$confirm(text,r)) 
-}
-window.saveAsPromise = function(path,text){
-	return new Promise(r=>$file.save(path,text,r))
-}
 window.modOverview = async function(mod){
   var p = $window({
 		title:"Mod overview - "+mod.title,
@@ -105,7 +96,7 @@ window.w93InstallApp = async (data,confirm=true)=>{
 			  var inst = data.inst || ""
 			  console.log("install:",inst || "none")
 			  if(inst){
-			 	eval(await loadAsPromise("/a/manApps/"+data.title+"/"+inst))
+			 	$loader.script(base64Url(await loadAsPromise("/a/manApps/"+data.title+"/"+inst), "text/javascript"))
 			  }
 			  console.log("main:",mp)
 			  eval(await loadAsPromise(mp))
@@ -154,7 +145,7 @@ if(!loadWindow){
 	 	var mPath = JSON.parse(await loadAsPromise("/a/manApps/"+app+"/app.json")).main
 		var main = "/a/manApps/"+app+"/"+mPath
 		console.log("initialize:",app,"main",main)
-		eval(await loadAsPromise(main))
+		$loader.script(base64Url(await loadAsPromise(main), "text/javascript"))
 	  })
 	}
 }

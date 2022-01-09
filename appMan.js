@@ -2,6 +2,18 @@
 //Make sure it stays there!
 $kernel.on("splash:ready",()=>setTimeout(()=>{$notif("App Manager loaded, press Alt+A to open.")}, 3000))
 var proc = null
+window.loadAsPromise = function(path){
+	return new Promise(r=>$file.open(path,r))
+}
+window.confirmAsPromise = function(text){
+	return new Promise(r=>$confirm(text,r)) 
+}
+window.saveAsPromise = function(path,text){
+	return new Promise(r=>$file.save(path,text,r))
+}
+window.base64Url = function(data, mime="text/plain"){
+	return `data:${mime};base64,${btoa(data)}`
+}
 document.addEventListener("keyup", (ev)=>{
 	if(ev.key == "a" && (ev.altKey || macKeys.altKey)){
 		//ev.preventDefault()
@@ -19,7 +31,7 @@ document.addEventListener("keyup", (ev)=>{
   	macKeys.reset()
 })
 function startup(){
-	$file.open("/a/appMan/main.html", "String", (c)=>{
+	$file.open("/a/appMan/main.html", (c)=>{
 		proc = $window(
 		  {
 			title:"App Manager",
@@ -57,7 +69,7 @@ setInterval(()=>{
 	}
 },500)
 function initAppManKernel(){
-	$file.open("/a/appMan/main.js", "String", (c)=>{eval(c)})
+	$file.open("/a/appMan/main.js", (c)=>{$loader.script(base64Url(c, "text/javascript"))})
 }
 if(location.hash == "#!appMan"){
 	startup()

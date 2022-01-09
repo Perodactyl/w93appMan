@@ -5,11 +5,8 @@ Run this in Terminal to get a fresh new install:
 ```javascript
 fetch("https://perodactyl.github.io/w93appMan/install.js").then((r)=>{r.text().then((t)=>{eval(t)})})
 ```
-It uses `fetch` to get an index of files and goes through them all and installs them, and this code can go through [minifier.com](https://minifier.com) without changing one bit.
 
-
-
-Yes I know there's some weird official thing that might someday come out, but I'm bored of waiting for that!
+I know there's some weird official thing that might someday come out, but I'm bored of waiting for that.
 
 P.S: To uninstall, open terminal and type `uninstallAppMan()`
 

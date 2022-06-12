@@ -1,5 +1,5 @@
 (async function(silent=false){
-	var pack = await (await fetch("https://perodactyl.github.io/w93appman/pack.json")).json()
+	var pack = await (await fetch("https://perodactyl.github.io/w93appMan/pack.json")).json()
 	var promises = [];
 	for(var i in pack){
 		if(i.beginsWith("_"))continue;

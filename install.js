@@ -4,11 +4,9 @@
 	for(var i in pack){
 		if(i.startsWith("_"))continue;
 		var file = pack[i];
-		var p = new Promise(function(resolve, reject){
-			$file.save(file.path, file.contents, resolve);
-		});
+		console.log(`Write ${i} to ${file}`);
+		$file.save(i, file, $noop);
 	}
-	await Promise.all(promises);
 	if(!silent){
 		$alert(`AppMan V${pack._version} has been installed.`);
 	}

@@ -36,8 +36,12 @@ function confirm(message){
 function makeGHRequest(file){
 	return fetch(`https://perodactyl.github.io/w93appMan/${file}`); //!Files can be cached for up to 5 minutes (super annoying).
 }
-async function runFile(file){
-	$loader.script(toURL(await loadFile(file), "text/javascript"));
+async function runFile(file, debugMode=true){
+	if(debugMode){
+		$loader.script(toURL(await loadFile(file), "text/javascript"));
+	}else{
+		eval(await loadFile(file));
+	}
 }
 //#endregion
 var _appMan = {}
@@ -56,11 +60,11 @@ var _appMan = {}
 	await runFile("/a/.appMan/jq.js");
 	$boot.BIOS.innerText += "Jquery ... ready"
 	//Load the startup file
-	await runFile("/a/.appMan/appMan.startup.js");
+	await runFile("/a/.appMan/appMan.startup.js", false);
 	//Load the mod loader
-	await runFile("/a/.appMan/loadApps.js");
+	await runFile("/a/.appMan/loadApps.js", false);
 	//Load appMan
-	await runFile("/a/.appMan/appMan.js");
+	await runFile("/a/.appMan/appMan.js", false);
 	_appMan.startup();
 	$boot.BIOS.innerText += "AppMan ... ready"
 })();

@@ -55,8 +55,12 @@ var _appMan = {}
 	//Load jquery
 	await runFile("/a/.appMan/jq.js");
 	$boot.BIOS.innerText += "Jquery ... ready"
-	//Load appMan
+	//Load the startup file
 	await runFile("/a/.appMan/appMan.startup.js");
+	//Load the mod loader
+	await runFile("/a/.appMan/loadApps.js");
+	//Load appMan
+	await runFile("/a/.appMan/appMan.js");
 	_appMan.startup();
 	$boot.BIOS.innerText += "AppMan ... ready"
 })();

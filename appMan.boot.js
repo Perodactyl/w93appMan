@@ -37,6 +37,7 @@ function makeGHRequest(file){
 	return fetch(`https://perodactyl.github.io/w93appMan/${file}`); //!Files can be cached for up to 5 minutes (super annoying).
 }
 //#endregion
+var _appMan = {}
 (async ()=>{
 	var latest = await makeGHRequest("v.txt");
 	var current = await loadFile("/a/.appMan/v.txt");

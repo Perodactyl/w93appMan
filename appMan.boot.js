@@ -41,7 +41,7 @@ async function runFile(file){
 }
 //#endregion
 var _appMan = {}
-(async ()=>{
+;(async ()=>{
 	var latest = await makeGHRequest("v.txt");
 	var current = await loadFile("/a/.appMan/v.txt");
 	if(latest != current){

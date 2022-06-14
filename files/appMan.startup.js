@@ -1,7 +1,7 @@
 //!This file runs upon startup, immediately after jquery is loaded.
 _appMan.startup = function(){
 	le._apps.appMan = {
-		accept: ".ami",
+		accept: ".ami", //AMI: AppMan Installer
 		categories: "Tools",
 		exec: _appMan.open,
 		ext: ["ami"],

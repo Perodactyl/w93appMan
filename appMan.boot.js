@@ -2,7 +2,11 @@
 //#region Utils
 function loadFile(path){
 	return new Promise(function(resolve, reject){
-		$file.open(path, "String", resolve)
+		try{
+			$file.open(path, "String", resolve)
+		}catch(e){
+			console.warn(`Failed to open ${path}`);
+		}
 	});
 }
 function storeFile(path, contents){
@@ -43,28 +47,40 @@ async function runFile(file, debugMode=true){
 		eval(await loadFile(file));
 	}
 }
+function sleep(time){
+	return new Promise(r=>setTimeout(r, time));
+}
 //#endregion
 var _appMan = {}
 ;(async ()=>{
-	var latest = await makeGHRequest("v.txt");
+	var latest = (await (await makeGHRequest("v.txt")).text()).trim();
 	var current = await loadFile("/a/.appMan/v.txt");
 	if(latest != current){
-		var response = await confirm(`An update is available(v${latest}). Would you like to update? (Current v${current})`);
+		var response = await confirm({
+			msg:`An update is available(v${latest}). Would you like to update? (Current v${current})`,
+			title: "App Manager Update"
+		});
 		if(response){
 			var installer = await makeGHRequest("install.js");
 			eval(await installer.text())(true);
 		}
 	}
 
+	await sleep(500);
+
 	//Load jquery
-	await runFile("/a/.appMan/jq.js");
-	$boot.BIOS.innerText += "Jquery ... ready"
+	await runFile("/a/.appMan/jq.js", false);
+	$boot.BIOS.innerText += "jquery ... ready"
 	//Load the startup file
 	await runFile("/a/.appMan/appMan.startup.js", false);
 	//Load the mod loader
 	await runFile("/a/.appMan/loadApps.js", false);
+	_appMan.load();
+
+	await onBoot();
+
 	//Load appMan
-	await runFile("/a/.appMan/appMan.js", false);
-	_appMan.startup();
-	$boot.BIOS.innerText += "AppMan ... ready"
+	await runFile("/a/.appMan/appMan.js");
+	await _appMan.startup();
+	$boot.BIOS.innerText += "appman ... ready"
 })();

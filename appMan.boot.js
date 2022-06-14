@@ -75,7 +75,7 @@ var _appMan = {}
 	await runFile("/a/.appMan/appMan.startup.js", false);
 	//Load the mod loader
 	await runFile("/a/.appMan/loadApps.js", false);
-	_appMan.load();
+	await _appMan.load();
 
 	await onBoot();
 

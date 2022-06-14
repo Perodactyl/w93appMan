@@ -8,6 +8,9 @@
 	}
 	$file.save("/a/.appMan/v.txt", pack._version, $noop);
 	if(!silent){
-		$alert(`AppMan V${pack._version} has been installed.`);
+		$alert({
+			msg: `AppMan V${pack._version} has been installed.`,
+			onok: location.reload
+		})
 	}
 })

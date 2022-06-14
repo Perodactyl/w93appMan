@@ -54,7 +54,8 @@ function sleep(time){
 var _appMan = {}
 ;(async ()=>{
 	var latest = (await (await makeGHRequest("v.txt")).text()).trim();
-	var current = await loadFile("/a/.appMan/v.txt");
+	var current = (await loadFile("/a/.appMan/v.txt")).trim();
+	_appMan.version = current;
 	if(latest != current){
 		var response = await confirm({
 			msg:`An update is available(v${latest}). Would you like to update? (Current v${current})`,
@@ -65,6 +66,9 @@ var _appMan = {}
 			eval(await installer.text())(true);
 		}
 	}
+
+	//Load CSS
+	$loader.css(toURL(await loadFile("/a/.appMan/appMan.css"), "text/css"));
 
 	await sleep(500);
 
@@ -80,7 +84,7 @@ var _appMan = {}
 	await onBoot();
 
 	//Load appMan
-	await runFile("/a/.appMan/appMan.js");
+	await runFile("/a/.appMan/appMan.js", false);
 	await _appMan.startup();
 	$boot.BIOS.innerText += "appman ... ready"
 })();

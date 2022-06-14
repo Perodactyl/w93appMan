@@ -1,0 +1,41 @@
+#_AMappList{
+	margin: 3px;
+	border: 2px inset #ccc;
+	overflow-y: scroll;
+}
+#_AMroot{
+	position: relative; /* So that it can contain absolute items. */
+}
+._AMapp{
+	margin: 3px;
+	border: 2px outset #ccc;
+	padding: 3px;
+	background-color: white;
+	position: relative;
+}
+._AMapp:active{
+	border-style: inset;
+}
+._AMapp h3{
+	margin: 0;
+}
+._AMapp[volatile]{
+	background-color: red;
+}
+._AMapp[warning]{
+	background-color: yellow;
+}
+._AMtype{
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	font-size: 8pt;
+	color: darkgrey;
+}
+#_AMversion{
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	color: darkgrey;
+	font-size: x-small;
+}

@@ -21,7 +21,9 @@ _appMan.load = async function(registryLocation){
 				_appMan.errors.push(`Failed to load data.json for ${url}`);
 				continue;
 			}
+			dataFile._url = url;
 			_appMan.apps.push(dataFile);
+			console.log(`Loaded ${url}:`, dataFile);
 		}
 	}
 }
